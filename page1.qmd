@@ -54,8 +54,6 @@ A gradient ranging from purple to yellow: yellow for higher wages above \$205k a
 
 This scatter plot will help the user understand the development or otherwise of the association between how many people are employed in certain high-paying jobs and the wages they earn. It would probably yield a useful context to job seekers or professionals in these industries while comparing roles.
 
-Youtube Video :
-{{< video https://youtu.be/_HubPev2HQk >}}
 **References**:
 
 1.  HowMuch.net. (2020). The Best-Paying Occupation in Each State. Retrieved from <https://howmuch.net/articles/best-paying-occupation-in-each-state.>
