@@ -1,0 +1,5 @@
+---
+title: "youtube video"
+---
+
+{{< video https://youtu.be/_HubPev2HQk >}}
