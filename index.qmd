@@ -16,8 +16,5 @@ I have always had a passion for diving deep into data and uncovering the stories
 In addition to my technical background, I'm an active speaker who loves collaborating with others, and I'm known for my strong communication skills. I also had the opportunity to lead a student event club during my undergraduate years, where I organized a wide range of cultural and tech events, bringing together creative minds to make impactful experiences.
 
 
-Youtube Video :
-{{< video https://youtu.be/_HubPev2HQk >}}
-
 ```{}
 ```
