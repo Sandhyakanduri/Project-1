@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Sandhyakanduri"
+  page-navigation: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - page1.qmd
+      - page2.qmd
+    right:
+      - icon: twitter
+        href: "https://twitter.com"
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/sandhya-kanduri-888bb61b6/"
+      - icon: github
+        href: "https://github.com/Sandhyakanduri"
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+
+editor: visual
+

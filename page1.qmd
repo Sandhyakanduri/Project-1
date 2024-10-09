@@ -1,0 +1,62 @@
+---
+title: "PROJECT 1"
+---
+
+## Project 1: **Mapping the Highest Paid Professions in Each State**
+
+The visualized map that we took as a reference is intended to visually explore the best-paying job in each state and territory of the United States, providing geographical context for salary trends and highlighting what those top occupations are. It can serve as a reference for one's decisions regarding career prospects or job opportunities based on location and salary potential. This is quite rightly the best way of capturing the dataset, since a median figure separates the sample between higher and lower half. All things being equal, someone working in each job will likely earn somewhere close to the numbers on the map.
+
+# ![](origin.jpg)
+
+*HowMuch.net, "Best Paying Occupation in Each State"*, available at HowMuch.net.
+
+Disadvantages in the graph and suggested improvements
+
+1.Since the above map depicts only the best-paying occupation in each state, it does not provide further information on the pay difference between various occupations or states. Nothing in this map explains why wages vary across states and occupations; there is no context about regional cost of living, demand, or competition The bar plot of the highest-paid occupations will zoom in precisely at wage comparisons across occupations. It will show what the exact wage difference between Physicians, Chief Executives, Lawyers, etc., is in any arbitrary state. It provides much more fine-grained information that cannot be conveyed using the map.
+
+2\. Because it color-codes only the best-paid occupation for each state, it obscures pay disparity across-and within-states for different occupations. You could extend this bar plot by adding regional variations in, for example, median wages of the same occupations across different states. If the data is available, each occupation would receive multiple bars in which each one is representing a different state, showing directly the regional wage trends
+
+3.The map doesn't tell us anything about the numbers of people employed in those jobs either: some of those highly remunerated occupations are very rare, others involve a huge workforce.The median wages of different areas will give a greater insight into wage variation in the various areas for all occupations. You can visually display median wages of an area to show earnings variations throughout states, thus providing more concrete and clear wage disparity insights across the country.
+
+4.Graph used some kind of confusing color scheme that did not serve the purpose of clearly elaborating the differences across occupation sectors. Besides, there was no context about the wage maps, such as why one region has higher wages than others. In a geographically distributed plot, using a single-color gradient, such as light to dark, for wage levels would show regional differences in wages so much more clearly, whereas multi-colored occupation indicators on the original map are not that easy to understand.Redesigned visualized graphs from the graph
+
+## Redesigned Graphs 
+
+1.  **Bar plot of the highest-paid occupations**: This will show the top-paying occupations in descending order, highlighting the one with the highest median wage.
+
+    ![](1.jpg)
+
+Graph useful to compare and contrast wages among the highest paid jobs include health-related jobs such as Psychiatrists, Nurse Anesthetists, Dentists, and Pediatricians and top management jobs including Chief Executives and Human Resources Managers.
+
+They seem closer to, or well above, \$200,000 for all occupations, which may be considered a high-paying employment.The vertical lines indicate the remuneration for these careers which vary in minor amounts,and this may be indicative of similar levels of remuneration across high-end segments of professions across different regions.
+
+**2.Bar plot of total employment by occupation**: This will show the total number of employees in each occupation for better understanding of occupation distribution across the dataset.
+
+![](2.jpg)
+
+Each bar gives the total amount of employees in that occupation. Family Medicine Physicians are the most, with over 3,000, while other occupations like Pediatricians and Dentists fall to around 800 and are much lower, though comparable to each other.
+
+The family medicine physician has the highest total rate of employment, which shows that this occupation is in great demand compared to other occupations. They are serving almost 4 times as large as a workforce compared to occupations such as Chief Executives or Obstetricians. Lower Employment for Specialized Occupations: Jobs like Nurse Anesthetists,Obstetricians, and Chief Executives have low total employment because those occupations are specialized, and the number of roles is limited.
+
+3.**Geographical distribution of median wages by area**: A map plot (choropleth map) to show median wages across different states or regions. color scale ranges from yellow to blue. Yellow indicates that the median is closer to \$200k and blue represents wages over \$205k.
+
+![](3.png)
+
+Below is the map where states are colored by the median wages of occupations. Lighter colors indicate low wages, while darker colors indicate higher wages. It also shows that some states, colored in shades of blue and green, include Colorado, Nevada, and New York; this would indicate that the three states' median wages are higher, closer to and above \$205k.Pairs of states, including Wyoming and Alabama, show yellow, indicating lower median wages in the \$200k range.
+
+Colorado, California, Nevada, New York, and parts of the Northeast have had higher median wages than other areas. States at a low range include Alabama, Kentucky, Dakotas, etc. Most of the country demonstrates wages relatively similarly within a range from \$200,000 to \$205,000, which shows that wages do vary, although the range is narrow across most states. This map is a good way for users to comprehend how geography could affect the pay and should prove helpful for anyone looking to relocate in search of greater pay, or in compiling competitive wages state by state.This visualization also shows regional economic disparities, with some states offering much higher wages than others, possibly due to localized demand for specialized occupations.
+
+**4.Scatter plot of total employment vs. median wage**: This will help identify any correlation between the size of employment and median wage for different occupations.
+
+![](4.jpg)
+
+A gradient ranging from purple to yellow: yellow for higher wages above \$205k and purple for the lower bound closer to \$175k. Most of the observations are concentrated between \$200k to \$210k median wage, while the total employment usually stays below 600. While the count of job employment varies greatly for a few occupations, with numbers reaching up to 1800 employees, their median wages remain relatively related to the low-employment-level wages.
+
+This scatter plot will help the user understand the development or otherwise of the association between how many people are employed in certain high-paying jobs and the wages they earn. It would probably yield a useful context to job seekers or professionals in these industries while comparing roles.
+
+**References**:
+
+1.  HowMuch.net. (2020). The Best-Paying Occupation in Each State. Retrieved from <https://howmuch.net/articles/best-paying-occupation-in-each-state.>
+2.  Wickham, H. (2023). ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. <https://ggplot2.tidyverse.org/reference/geom_bar.html>
+3.  Hahn, N. (2023). Making Maps with R: Using ggplot2 for Mapping. Retrieved from <https://bookdown.org/nicohahn/making_maps_with_r5/docs/ggplot2.html.>
+4.  Wickham, H., Chang, W., Henry, L., et al. (2023). geom_point function reference. Retrieved from <https://ggplot2.tidyverse.org/reference/geom_point.html.>

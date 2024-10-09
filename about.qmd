@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+Welcome to my professional space! I'm Sandhya, currently pursuing a master's degree in Data Analytics Engineering. With a strong foundation in Computer Science Engineering, I specialize in extracting insights from data, building predictive models, and driving data-driven solutions.
+
+### 

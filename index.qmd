@@ -1,0 +1,19 @@
+---
+title: "Sandhyakanduri"
+image: img..png
+about:
+  template: jolla
+  image-shape: round
+  image-width: 18em
+---
+
+HELLO!!
+
+I am Sandhya Kanduri!, I'm a graduate student currently pursuing a master's degree in Data Analytics Engineering at George Mason University. I hold a bachelor's degree in Computer Science Engineering, and throughout my academic journey, I've gained my skills in machine learning, data analysis, and problem-solving.
+
+I have always had a passion for diving deep into data and uncovering the stories behind the numbers. Over the years, I've completed several internships, both technical and non-technical, which have broadened my understanding of various domains and enhanced my adaptability. I led two major projects focused on machine learning and data analysis, gaining hands-on experience with practical, real-world data challenges.
+
+In addition to my technical background, I'm an active speaker who loves collaborating with others, and I'm known for my strong communication skills. I also had the opportunity to lead a student event club during my undergraduate years, where I organized a wide range of cultural and tech events, bringing together creative minds to make impactful experiences.
+
+```{}
+```

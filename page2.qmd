@@ -1,0 +1,210 @@
+---
+title: "Codework"
+---
+
+```{r}
+
+# Set CRAN mirror
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+# Assuming your data is in a data frame called 'df'
+library(ggplot2)
+library(tidyverse)
+
+Occupation <- read.csv("/Users/sandhyakanduri/Desktop/stat_db.csv", stringsAsFactors = FALSE)
+colnames(Occupation)
+
+colnames(Occupation) <- c("X", "AREA", "AREA_TITLE", "OCC_TITLE", "TOT_EMP", "A_MEDIAN")
+
+Occupation <- Occupation[-1, ]
+
+Occupation <- Occupation %>% select(-X)
+
+Occupation$TOT_EMP <- as.numeric(gsub(",", "", Occupation$TOT_EMP))
+Occupation$A_MEDIAN <- as.numeric(gsub(",", "", Occupation$A_MEDIAN))
+
+
+```
+
+```{r}
+#1. Bar Plot: Highest-Paid Occupations
+#This bar plot will display the top 10 occupations by median wage.
+
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+install.packages("plotly")
+library(plotly)
+
+# Get top 10 highest-paid occupations
+top_occupations <- Occupation %>%
+  arrange(desc(A_MEDIAN)) %>%
+  top_n(10, A_MEDIAN)
+
+# Create the plot using plot_ly
+plot1 <- plot_ly(
+  top_occupations,
+  x = ~reorder(OCC_TITLE, A_MEDIAN),
+  y = ~A_MEDIAN,
+  type = 'bar',
+  color = ~AREA_TITLE,  # This assigns different colors to each state
+  colors = 'Set1'  # Using a color palette for distinction
+) %>%
+  layout(
+    title = 'Top 10 Highest-Paid Occupations',
+    xaxis = list(title = 'Occupation'),
+    yaxis = list(title = 'Median Annual Wage'),
+    margin = list(l = 100),
+    showlegend = TRUE  # Enable the legend
+  )
+
+# Display the plot
+plot1
+
+```
+
+```{r}
+# 2 Get top 10 occupations by total employment
+top_emp_occupations <- Occupation %>%
+  arrange(desc(TOT_EMP)) %>%
+  top_n(10, TOT_EMP)
+
+# Create the plot using plot_ly
+plot2 <- plot_ly(
+  top_emp_occupations,
+  x = ~reorder(OCC_TITLE, TOT_EMP),
+  y = ~TOT_EMP,
+  type = 'bar',
+  marker = list(color = 'Set2')
+) %>%
+  layout(
+    title = 'Top 10 Occupations by Total Employment',
+    xaxis = list(title = 'Occupation'),
+    yaxis = list(title = 'Total Employment'),
+    margin = list(l = 100), # Add margin for long occupation names
+    showlegend = TRUE
+  )
+
+# Display the plot
+plot2
+
+
+```
+
+```{r}
+#3. Geographical Distribution of Median Wages by Area
+
+# Ensure AREA_TITLE is lowercased for matching
+install.packages("maps")
+library(maps)
+library(dplyr)
+
+library(plotly)
+library(datasets)
+
+# Check the Occupation dataset structure and ensure A_MEDIAN is present and valid
+str(Occupation)  # Look for A_MEDIAN and AREA_TITLE
+
+# Check for missing or identical values in A_MEDIAN
+summary(Occupation$A_MEDIAN)
+
+# Map full state names to abbreviations
+state_abbreviations <- data.frame(
+  state = tolower(state.name),  # Ensure lowercase matching
+  abbreviation = state.abb
+)
+
+# Ensure AREA_TITLE is in lowercase to match the state names
+Occupations_cleaned <- Occupation %>%
+  mutate(AREA_TITLE = tolower(AREA_TITLE)) %>%
+  left_join(state_abbreviations, by = c("AREA_TITLE" = "state"))
+
+# Summarize the median wage by area (state abbreviations)
+state_wages <- Occupations_cleaned %>%
+  group_by(abbreviation) %>%
+  summarize(median_wage = mean(A_MEDIAN, na.rm = TRUE))
+
+# Double-check the merged data
+print(state_wages)
+
+# Plot the choropleth map using state abbreviations
+plot3 <- plot_ly(
+  state_wages,
+  type = 'choropleth',
+  locations = ~abbreviation,  # Use state abbreviations
+  locationmode = 'USA-states',
+  z = ~median_wage,  # Median wage values should vary
+  colorscale = 'Viridis',  # Color scale for clear visualization
+  marker = list(line = list(color = 'white', width = 2)),  # Add borders for states
+  colorbar = list(title = "Median Wage", ticksuffix = "$")  # Adjust color bar settings
+) %>%
+  layout(
+    title = 'Geographical Distribution of Median Wages by State',
+    geo = list(
+      scope = 'usa',  # Focus on USA
+      projection = list(type = 'albers usa'),  # Use Albers projection
+      showlakes = TRUE,  # Show lakes
+      lakecolor = 'rgb(255, 255, 255)'  # Color lakes white
+    )
+  )
+
+# Display the plot
+plot3
+
+```
+
+```{r}
+#4. Scatter Plot: Total Employment vs. Median Wage
+
+# Create a stacked bar chart for total employment and median wage by occupation
+library(plotly)
+
+
+
+# Create a stacked bar chart for total employment and median wage by occupation
+library(plotly)
+
+# Create a scatter plot for total employment vs median wage by occupation with color
+scatter_plot_colored <- plot_ly(
+  Occupation,
+  x = ~TOT_EMP,  # Total Employment on the x-axis
+  y = ~A_MEDIAN,  # Median Wage on the y-axis
+  type = 'scatter',
+  mode = 'markers',
+  marker = list(
+    size = 8, 
+    opacity = 0.6, 
+    line = list(width = 1, color = 'black'),  # Clear markers with black border
+    color = ~A_MEDIAN,  # Color the markers based on median wage
+    colorscale = 'Viridis',  # Change color scale
+    colorbar = list(title = 'Median Wage', thickness = 15)  # Add color bar
+  ),
+  text = ~paste("Occupation: ", OCC_TITLE, 
+                "<br>Employment: ", formatC(TOT_EMP, format = "d", big.mark = ","),
+                "<br>Median Wage: $", formatC(A_MEDIAN, format = "f", big.mark = ","))  # Text on hover
+) %>%
+  layout(
+    title = list(
+      text = 'Total Employment vs. Median Wage by Occupation',
+      x = 0.5,
+      font = list(size = 18)  # Increased font size for title
+    ),
+    xaxis = list(
+      title = 'Total Employment',
+      titlefont = list(size = 14),  # Larger x-axis title
+      tickfont = list(size = 12),  # Increased tick label font size
+      showgrid = TRUE  # Add grid lines for better readability
+    ),
+    yaxis = list(
+      title = 'Median Wage',
+      titlefont = list(size = 14),  # Larger y-axis title
+      tickfont = list(size = 12),  # Increased tick label font size
+      showgrid = TRUE  # Add grid lines for better readability
+    ),
+    height = 600,  # Height of the plot for better visualization
+    margin = list(l = 50, r = 50, t = 50, b = 50)  # Adjust margins for clarity
+  )
+
+# Display the scatter plot
+scatter_plot_colored
+```
