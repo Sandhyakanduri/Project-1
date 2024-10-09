@@ -20,6 +20,7 @@ website:
         href: "https://www.linkedin.com/in/sandhya-kanduri-888bb61b6/"
       - icon: github
         href: "https://github.com/Sandhyakanduri"
+      -href: {{< video https://youtu.be/_HubPev2HQk >}}
 
 format:
   html:
