@@ -12,6 +12,7 @@ website:
       - about.qmd
       - page1.qmd
       - page2.qmd
+      - code.qmd
     right:
       - icon: twitter
         href: "https://twitter.com"
